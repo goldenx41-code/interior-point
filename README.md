@@ -1,2 +1,0 @@
-# interior-point
-interior-point
