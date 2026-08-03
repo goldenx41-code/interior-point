@@ -27,3 +27,19 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+function showGallery(id) {
+
+const galleries = document.querySelectorAll(".gallery-content");
+
+galleries.forEach(function(item){
+item.style.display = "none";
+});
+
+document.getElementById(id).style.display = "block";
+
+}
+
+// Website खुलते ही PVC Gallery दिखेगी
+window.onload = function () {
+showGallery("pvc");
+};
