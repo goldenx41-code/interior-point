@@ -1,47 +1,54 @@
-function openMenu() {
-  document.getElementById("nav").classList.toggle("active");
+function toggleMenu(){
+
+  const nav = document.getElementById("nav");
+
+  nav.classList.toggle("open");
+
 }
 
 
-// Mobile menu close after clicking
-document.querySelectorAll("#nav a").forEach(function(link) {
-  link.addEventListener("click", function() {
-    document.getElementById("nav").classList.remove("active");
+// Close mobile menu after clicking
+document.querySelectorAll(".nav a").forEach(function(link){
+
+  link.addEventListener("click",function(){
+
+    document.getElementById("nav").classList.remove("open");
+
   });
+
 });
 
 
-// Smooth reveal animation
-const elements = document.querySelectorAll(
-  ".service, .gallery-item, .review, .features div"
+// Small reveal animation
+const items = document.querySelectorAll(
+  ".service-sidebar, .about-box, .recent, .project-row article, .gallery-photo, .review-card"
 );
 
-const observer = new IntersectionObserver(function(entries) {
+const observer = new IntersectionObserver(function(entries){
 
-  entries.forEach(function(entry) {
+  entries.forEach(function(entry){
 
-    if (entry.isIntersecting) {
+    if(entry.isIntersecting){
 
       entry.target.style.opacity = "1";
       entry.target.style.transform = "translateY(0)";
 
       observer.unobserve(entry.target);
-
     }
 
   });
 
-}, {
-  threshold: 0.12
+},{
+  threshold:.08
 });
 
 
-elements.forEach(function(element) {
+items.forEach(function(item){
 
-  element.style.opacity = "0";
-  element.style.transform = "translateY(25px)";
-  element.style.transition = "opacity .7s ease, transform .7s ease";
+  item.style.opacity = "0";
+  item.style.transform = "translateY(15px)";
+  item.style.transition = "opacity .5s ease, transform .5s ease";
 
-  observer.observe(element);
+  observer.observe(item);
 
 });
